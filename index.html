@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+        <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+        <header>
+            <img src="img/icone2.png" alt="logo pagina" />
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </header>
+
+            <section id="inicio">
+                <img id="logo_inicio" src="img/logo_inicio.png" alt="logo">
+                <h1>Tecnologia simples para transformar pequenos negócios.</h1>
+                <br />
+                <p>
+                    Criamos sistemas e automações para organizar suas vendas,
+                    estoque, clientes e atendimento, sem complicação e com preço
+                    justo.
+                </p>
+                <br />
+                <button><a href="#contato"> Contato</a></button>
+                <br />
+                <h3>Destaques</h3>
+                <ol>
+                    <li>Simples de usar</li>
+                    <li>Feito sob medida</li>
+                    <li>Preço acessível</li>
+                </ol>
+            </section>
+
+            <section id="sobre">
+                <h1>Sobre a TechFácil.</h1>
+                <br />
+                <p>
+                    A TechFácil nasceu para levar à pequena empresa a tecnologia
+                    que antes só as grandes tinham, trocando cadernos e
+                    planilhas por sistemas simples e personalizados.
+                </p>
+                <br />
+                <h3>Nossa Missão</h3>
+                <p>
+                    Facilitar o uso da tecnologia e ajudar pequenos negócios a
+                    trabalhar de forma mais rápida e organizada
+                </p>
+                <br />
+                <h3>Nossos diferenciais</h3>
+                <ol>
+                    <li>Sistemas personalizados para cada cliente</li>
+                    <li>Custo menor que o de grandes empresas</li>
+                    <li>
+                        Inteligência artificial no atendimento e na organização
+                    </li>
+                    <li>Atendimento próximo, local ou online</li>
+                </ol>
+                <br />
+                <h2>Equipe</h2>
+                <div>
+                    <img src="img/membro-placeholder.svg" alt="foto membro" />
+                    <h3>Nome:Miguel</h3>
+                    <p>Função:Desenvolvedor</p>
+                </div>
+                <br />
+            </section>
+
+            <section id="servicos">
+                <h1>Serviços.</h1>
+                <p>
+                    Nossos serviços são para lojas, oficinas, salões,
+                    restaurantes, assistências técnicas e profissionais
+                    autônomos.
+                </p>
+
+                <dl>
+                    <dt>Criação de sistemas</dt>
+                    <dd>Controle de vendas, estoque, clientes e agendamentos.</dd>
+
+                    <dt>Criação de sites</dt>
+                    <dd>Presença online para o seu negócio ser encontrado.</dd>
+
+                    <dt>Automação de tarefas</dt>
+                    <dd>Menos trabalho manual e menos erros no dia a dia.</dd>
+
+                    <dt>Chatbots com IA</dt>
+                    <dd>Respondem clientes e enviam informações automaticamente.</dd>
+
+                    <dt>Integração com WhatsApp</dt>
+                    <dd>Atendimento e avisos automáticos para seus clientes.</dd>
+
+                    <dt>Manutenção e suporte</dt>
+                    <dd>Acompanhamento mensal para o sistema nunca parar.</dd>
+
+                </dl>
+            </section>
+
+            <section id="portfolio">
+                <h1>Trabalhos e resultados.</h1>
+                <p>
+                    <strong>Assistência técnica</strong>
+                    <br>
+                    <strong>Antes:</strong> ordens de serviço anotadas em caderno.
+                    <br>
+                    <strong>Depois:</strong> sistema com histórico de clientes e ordens de serviço.
+                </p>
+                <p><strong>Projeto de demonstração</strong></p>
+                <p>Descrição curta de um sistema que você já criou.</p>
+                <img src="img/projeto-placeholder.svg" alt="foto do projeto">
+                <p>"Depoimento do cliente aqui."</p>
+                <p>— Nome, tipo de negócio</p>
+            </section>
+
+            <section id="contato">
+              <h1>Pedir orçamento</h1>
+              <p>Conte como funciona o seu negócio e criamos a solução ideal.</p>
+
+             <!-- TODO: substituir 55DDDNUMERO pelo número real (formato 55DDDNUMERO) -->
+             <p>Prefere falar direto? <a href="https://wa.me/55DDDNUMERO">Chame no WhatsApp</a></p>
+
+              <!-- Formulário ainda sem backend: nenhum dado é enviado -->
+              <form>
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="negocio">Tipo de negócio</label>
+                <select id="negocio" name="negocio">
+                  <option value="">Selecione</option>
+                  <option>Loja</option>
+                  <option>Oficina</option>
+                  <option>Salão</option>
+                  <option>Restaurante</option>
+                  <option>Assistência técnica</option>
+                  <option>Profissional autônomo</option>
+                  <option>Outro</option>
+                </select>
+
+                <label for="telefone">Telefone / WhatsApp</label>
+                <input type="tel" id="telefone" name="telefone" required>
+
+                <label for="email">E-mail (opcional)</label>
+                <input type="email" id="email" name="email">
+
+                <label for="servico">O que você precisa?</label>
+                <select id="servico" name="servico">
+                  <option value="">Selecione</option>
+                  <option>Sistema (vendas, estoque, clientes)</option>
+                  <option>Site</option>
+                  <option>Automação de tarefas</option>
+                  <option>Chatbot com IA</option>
+                  <option>Integração com WhatsApp</option>
+                  <option>Ainda não sei</option>
+                </select>
+
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="5"></textarea>
+
+                <button type="button" class="botao">Enviar pedido</button>
+                <p class="aviso" role="status">
+                    Formulário em manutenção: o envio ainda não está ativo. Fale pelo WhatsApp ou e-mail.
+                </p>
+              </form>
+
+              <address>
+                <!-- TODO: substituir pelo número real (formato 55DDDNUMERO) -->
+                <p>Prefere falar direto? <a href="https://wa.me/55DDDNUMERO">Chame no WhatsApp</a></p>
+                <!-- TODO: substituir pelo e-mail real -->
+                <p>E-mail: <a href="mailto:contato@techfacil.com">contato@techfacil.com</a></p>
+              </address>
+            </section>
+
+        </main>
+    </body>
+</html>

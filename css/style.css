@@ -1,0 +1,598 @@
+/* ==========================================================
+   TechFácil — azul, preto e cinza · estilo "liquid glass"
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Sora:wght@500;600;700&display=swap");
+
+:root {
+    /* paleta */
+    --preto: #04060b;
+    --preto-2: #0a0f1a;
+    --azul: #2f7bff;
+    --azul-claro: #7db2ff;
+    --azul-profundo: #0b3a9e;
+    --cinza-100: #eef1f6;
+    --cinza-300: #b3bac8;
+    --cinza-500: #737b8c;
+
+    /* vidro */
+    --vidro-fundo: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.13) 0%,
+        rgba(255, 255, 255, 0.04) 45%,
+        rgba(255, 255, 255, 0.08) 100%
+    );
+    --vidro-borda: rgba(255, 255, 255, 0.16);
+    --vidro-brilho: inset 0 1px 0 rgba(255, 255, 255, 0.35),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+        inset 0 0 24px rgba(125, 178, 255, 0.06);
+    --vidro-sombra: 0 20px 50px rgba(0, 0, 0, 0.45);
+    --vidro-blur: blur(22px) saturate(180%);
+
+    --raio: 28px;
+    --raio-menor: 18px;
+}
+
+/* ---------- base ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0 1.25rem 4rem;
+    min-height: 100vh;
+    font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--cinza-300);
+    background: var(--preto);
+}
+
+/* esferas de luz atrás do vidro (é o que dá o efeito de refração) */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    z-index: -1;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+body::before {
+    width: 60vmax;
+    height: 60vmax;
+    top: -20vmax;
+    left: -15vmax;
+    background: radial-gradient(
+        circle at 40% 40%,
+        var(--azul) 0%,
+        var(--azul-profundo) 45%,
+        transparent 70%
+    );
+    filter: blur(70px);
+    opacity: 0.75;
+    animation: flutuar 28s ease-in-out infinite alternate;
+}
+
+body::after {
+    width: 50vmax;
+    height: 50vmax;
+    right: -18vmax;
+    bottom: -18vmax;
+    background: radial-gradient(
+        circle at 50% 50%,
+        #566074 0%,
+        #1b2433 50%,
+        transparent 70%
+    );
+    filter: blur(80px);
+    opacity: 0.7;
+    animation: flutuar 34s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes flutuar {
+    from {
+        transform: translate(0, 0) scale(1);
+    }
+    to {
+        transform: translate(6vmax, 5vmax) scale(1.12);
+    }
+}
+
+/* ---------- tipografia ---------- */
+h1,
+h2,
+h3 {
+    font-family: "Sora", "DM Sans", system-ui, sans-serif;
+    color: var(--cinza-100);
+    line-height: 1.15;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+}
+
+p {
+    margin: 0 0 0.75rem;
+    max-width: 62ch;
+}
+
+a {
+    color: var(--azul-claro);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #fff;
+}
+
+/* os <br> do HTML só servem de espaçamento; o CSS já cuida disso */
+section > br {
+    display: none;
+}
+
+/* ---------- cabeçalho (pílula de vidro) ---------- */
+header {
+    position: sticky;
+    top: 14px;
+    z-index: 50;
+    max-width: 1000px;
+    margin: 14px auto 0;
+    padding: 0.6rem 0.8rem 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--vidro-fundo), rgba(10, 15, 26, 0.45);
+    border: 1px solid var(--vidro-borda);
+    border-radius: 999px;
+    box-shadow: var(--vidro-brilho), var(--vidro-sombra);
+    -webkit-backdrop-filter: var(--vidro-blur);
+    backdrop-filter: var(--vidro-blur);
+}
+
+header img {
+    width: 80px;
+    height: 80px;
+    flex: none;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#logo_inicio{
+    height: auto;
+    width: 100%;
+    max-width: 800px;
+}
+
+nav {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+nav::-webkit-scrollbar {
+    display: none;
+}
+
+nav a {
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    color: var(--cinza-300);
+    font-weight: 500;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+nav a:hover {
+    color: #fff;
+    background: rgba(125, 178, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------- seções (painéis de vidro) ---------- */
+section {
+    position: relative;
+    overflow: hidden;
+    max-width: 1000px;
+    margin: 1.75rem auto 0;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    scroll-margin-top: 6rem;
+    background: var(--vidro-fundo), rgba(10, 15, 26, 0.4);
+    border: 1px solid var(--vidro-borda);
+    border-radius: var(--raio);
+    box-shadow: var(--vidro-brilho), var(--vidro-sombra);
+    -webkit-backdrop-filter: var(--vidro-blur);
+    backdrop-filter: var(--vidro-blur);
+}
+
+/* reflexo de luz no canto superior, como em vidro líquido */
+section::before {
+    content: "";
+    position: absolute;
+    top: -40%;
+    left: -20%;
+    width: 70%;
+    height: 80%;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.12),
+        transparent 65%
+    );
+    transform: rotate(-18deg);
+    pointer-events: none;
+}
+
+section > * {
+    position: relative; /* conteúdo fica acima do reflexo */
+}
+
+/* ---------- hero ---------- */
+#inicio {
+    margin-top: 2.5rem;
+    padding-block: clamp(3rem, 9vw, 6rem);
+}
+
+#inicio h1 {
+    font-size: clamp(2.2rem, 6.5vw, 4rem);
+    max-width: 16ch;
+    background: linear-gradient(180deg, #fff 30%, var(--azul-claro) 130%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#inicio > p {
+    font-size: 1.2rem;
+    margin-bottom: 1.75rem;
+}
+
+/* ---------- botões ---------- */
+button {
+    font: inherit;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    background: linear-gradient(
+        180deg,
+        rgba(125, 178, 255, 0.85) 0%,
+        var(--azul) 45%,
+        var(--azul-profundo) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55),
+        inset 0 -8px 16px rgba(4, 6, 11, 0.25),
+        0 10px 30px rgba(47, 123, 255, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -8px 16px rgba(4, 6, 11, 0.25),
+        0 14px 36px rgba(47, 123, 255, 0.55);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* botão que contém um link (<button><a>) */
+button a {
+    display: inline-block;
+    padding: 0.85rem 1.8rem;
+    color: #fff;
+}
+
+button a:hover {
+    color: #fff;
+}
+
+/* botão de enviar do formulário */
+button[type="submit"],
+button.botao {
+    padding: 0.9rem 1.8rem;
+    justify-self: start;
+    margin-top: 0.5rem;
+}
+
+/* aviso de formulário sem envio */
+.aviso {
+    margin-top: 0.75rem;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.92rem;
+    color: var(--azul-claro);
+    background: rgba(47, 123, 255, 0.1);
+    border: 1px solid rgba(125, 178, 255, 0.3);
+    border-radius: 14px;
+}
+
+/* ---------- listas ---------- */
+ol {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+ol li {
+    padding: 0.55rem 1.1rem;
+    color: var(--cinza-100);
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* diferenciais: cartões menores em grade */
+#sobre ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.9rem;
+}
+
+#sobre ol li {
+    padding: 1.1rem 1.2rem;
+    border-radius: var(--raio-menor);
+    font-weight: 400;
+    color: var(--cinza-300);
+}
+
+/* ---------- equipe ---------- */
+#sobre > div {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 200px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--raio-menor);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+#sobre > div img {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--azul), var(--preto-2));
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#sobre > div h3 {
+    margin: 1rem 0 0.15rem;
+}
+
+#sobre > div p {
+    margin: 0;
+    color: var(--cinza-500);
+}
+
+/* ---------- serviços (lista de definição em linhas) ---------- */
+dl {
+    display: grid;
+    grid-template-columns: minmax(180px, 1fr) 2fr;
+    margin: 1.75rem 0 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--raio-menor);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+dt,
+dd {
+    margin: 0;
+    padding: 1.1rem 1.4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+dt {
+    grid-column: 1;
+    font-family: "Sora", "DM Sans", sans-serif;
+    font-weight: 600;
+    color: var(--cinza-100);
+}
+
+dd {
+    grid-column: 2;
+}
+
+dt:first-of-type,
+dt:first-of-type + dd {
+    border-top: 0;
+}
+
+/* ---------- portfólio ---------- */
+#portfolio p strong:first-child {
+    color: var(--cinza-100);
+}
+
+#portfolio img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-height: 180px;
+    margin: 1rem 0;
+    object-fit: cover;
+    border-radius: var(--raio-menor);
+    background: linear-gradient(135deg, var(--azul-profundo), var(--preto-2));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+#portfolio p:nth-of-type(3) {
+    margin: 1.25rem 0 0;
+    padding: 1rem 1.25rem;
+    font-style: italic;
+    color: var(--cinza-100);
+    border-left: 3px solid var(--azul);
+    background: rgba(47, 123, 255, 0.08);
+    border-radius: 0 var(--raio-menor) var(--raio-menor) 0;
+}
+
+#portfolio p:last-of-type {
+    margin-top: 0.5rem;
+    color: var(--cinza-500);
+}
+
+/* ---------- formulário ---------- */
+form {
+    display: grid;
+    gap: 0.4rem;
+    max-width: 560px;
+    margin-top: 1.5rem;
+}
+
+label {
+    margin-top: 0.8rem;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--cinza-100);
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font: inherit;
+    color: var(--cinza-100);
+    background: rgba(4, 6, 11, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 14px;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.35);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea {
+    resize: vertical;
+}
+
+select option {
+    background: var(--preto-2);
+    color: var(--cinza-100);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--azul-claro);
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.35),
+        0 0 0 3px rgba(47, 123, 255, 0.35);
+}
+
+address {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    font-style: normal;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+address p {
+    margin-bottom: 0.4rem;
+}
+
+/* ---------- acessibilidade ---------- */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--azul-claro);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    body::before,
+    body::after {
+        animation: none;
+    }
+
+    button,
+    nav a {
+        transition: none;
+    }
+}
+
+/* ---------- celular ---------- */
+@media (max-width: 640px) {
+    body {
+        padding: 0 0.75rem 3rem;
+    }
+
+    header {
+        border-radius: 24px;
+    }
+
+    dl {
+        grid-template-columns: 1fr;
+    }
+
+    dt,
+    dd {
+        grid-column: 1;
+    }
+
+    dt {
+        padding-bottom: 0.2rem;
+    }
+
+    dd {
+        padding-top: 0;
+        border-top: 0;
+    }
+
+    dt:first-of-type + dd {
+        border-top: 0;
+    }
+
+    form {
+        max-width: 100%;
+    }
+}
+
+/* navegadores sem backdrop-filter: fundo mais opaco para manter a leitura */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    header,
+    section {
+        background: rgba(14, 20, 34, 0.92);
+    }
+}
